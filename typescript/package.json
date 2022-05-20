@@ -1,0 +1,14 @@
+{
+  "name": "ts-lessons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Imad Rajwani",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.1.0"
+  }
+}
