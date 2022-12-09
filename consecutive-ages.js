@@ -1,101 +1,87 @@
 //Ruthenium 2019
 // 15%
-// Errors: Test cases except "all distinct"
+// Errors: Tests cases except "all distinct"
 function solution(A, K) {
-
-    
-    
-    let ages = [], cons = 0, maxCons = 0, remaining;
-    A.forEach((val, index) => {
-        
-        if(A.indexOf(val) == index) {
-            ages.push(val)
-        }
-    });
-
-    if(K == 0) {
-        for(var age of ages) {
-            cons = 0;
-            for(let i = A.indexOf(age); i<A.length;i++) {
-                if(A[i] == age) {
-                    cons++
-                    maxCons = Math.max(cons, maxCons);
-                }
-                else {
-                    break
-                }
-            }
-        }
+  let ages = [],
+    cons = 0,
+    maxCons = 0,
+    remaining;
+  A.forEach((val, index) => {
+    if (A.indexOf(val) == index) {
+      ages.push(val);
     }
-    else {
+  });
 
-        for(var age of ages) {
-            
-            cons = 0 //consecutive;
-            remaining = K;
-            let i = A.indexOf(age);
-            while(remaining > 0) {
-                if(A[i] == age) {
-                    cons++
-                }
-                else {
-
-                    if(remaining > 0) {
-                        cons++;
-                        maxCons = Math.max(cons, maxCons);
-                        remaining--;
-                    }
-                    
-                }
-
-                i = (i+1) % A.length;
-            }
-            
+  if (K == 0) {
+    for (var age of ages) {
+      cons = 0;
+      for (let i = A.indexOf(age); i < A.length; i++) {
+        if (A[i] == age) {
+          cons++;
+          maxCons = Math.max(cons, maxCons);
+        } else {
+          break;
         }
+      }
     }
+  } else {
+    for (var age of ages) {
+      cons = 0; //consecutive;
+      remaining = K;
+      let i = A.indexOf(age);
+      while (remaining > 0) {
+        if (A[i] == age) {
+          cons++;
+        } else {
+          if (remaining > 0) {
+            cons++;
+            maxCons = Math.max(cons, maxCons);
+            remaining--;
+          }
+        }
 
-    return maxCons
-    
-    
-    
-    
+        i = (i + 1) % A.length;
+      }
+    }
+  }
+
+  return maxCons;
 }
 
-let ans = solution([1,1,3,4,3,3,4], 2);
+let ans = solution([1, 1, 3, 4, 3, 3, 4], 2);
 
 console.log(ans);
 
 function findMaxCons(A) {
-    let cons = 1, maxCons = 1;
-    // console.log(A)
-    for (let i = 0; i < A.length; i++) {
-        if (A[i] === A[i + 1]) {
-            cons+=1
-        }
-        else {
-            cons = 1;
-        }
-        maxCons = Math.max(cons, maxCons);
+  let cons = 1,
+    maxCons = 1;
+  // console.log(A)
+  for (let i = 0; i < A.length; i++) {
+    if (A[i] === A[i + 1]) {
+      cons += 1;
+    } else {
+      cons = 1;
     }
-    return maxCons;
+    maxCons = Math.max(cons, maxCons);
+  }
+  return maxCons;
 }
 
 function maxConsBooks(A, K) {
-    
-    let cons = 0, maxCons = 0, temp;
-    for (let i = 0; i < A.length; i++) {
-        
-        temp = A;
-        for (let r = 1; r <= K && i < A.length; r++) {
-            if (i + r < A.length) temp[i + r] = temp[i];
-        }
-        cons = findMaxCons(temp);
-            
-        
-        maxCons = Math.max(cons, maxCons);
+  let cons = 0,
+    maxCons = 0,
+    temp;
+  for (let i = 0; i < A.length; i++) {
+    temp = A;
+    for (let r = 1; r <= K && i < A.length; r++) {
+      if (i + r < A.length) temp[i + r] = temp[i];
     }
+    cons = findMaxCons(temp);
 
-    return maxCons;
+    maxCons = Math.max(cons, maxCons);
+  }
+
+  return maxCons;
 }
 
 console.log(maxConsBooks([1, 1, 3, 4, 3, 3, 4], 2));
