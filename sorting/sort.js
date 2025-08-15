@@ -33,6 +33,7 @@ function quickSort(arr) {
     }
     else {
         const pivot = arr[0];
+        // for loop would be faster
         const partitionedArrays = arr.slice(1,).reduce((acc, elem) => {
             if (elem <= pivot) acc[0].push(elem);
             if (elem > pivot) acc[1].push(elem);

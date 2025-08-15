@@ -12,9 +12,6 @@ function solution(N) {
         sum += Math.pow(2, primeFactors.length);
     }
 
-
-
-
     return sum;
 }
 
