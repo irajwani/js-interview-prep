@@ -2,6 +2,10 @@
  * @param {number[]} height
  * @return {number}
  */
+/*
+* Use 2 pointers
+* Intelligently move correct pointer to consider a potentially bigger container
+* */
 var maxArea = function(height) {
     // 2,1
     let max = 0;
