@@ -2,7 +2,7 @@ function bFS(tree, root, searchValue) {
     let queue = [];
     queue.push(root);
     while(queue.length > 0) {
-        let currentNode = queue[0];
+        let currentNode = queue.shift();
         if(currentNode.value === searchValue) {
             return currentNode.value;
         }
@@ -14,8 +14,6 @@ function bFS(tree, root, searchValue) {
         if (currentNode.right !== null) {
             queue.push(tree[currentNode.right]);
         }
-
-        queue.shift();
     }
 
     return "could not find value";
